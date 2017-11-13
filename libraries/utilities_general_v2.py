@@ -12,6 +12,8 @@ from builtins import object
 
 import os, sys, pdb, random, collections, pickle, stat, codecs, itertools, shutil, datetime, importlib, requests
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from math import *
 from functools import reduce
