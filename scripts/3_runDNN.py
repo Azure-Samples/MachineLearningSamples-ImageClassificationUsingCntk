@@ -20,6 +20,10 @@ model = load_model(cntkRefinedModelPath)
 mapPath = pathJoin(workingDir, "rundnn_map.txt")
 print("Directory used to read and write model/image files: " + rootDir)
 
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.3_runDNN", "true")
+
 # Compute dnn output for each image and write to disk
 print("Running DNN for training set..")
 dnnOutputTrain = runCntkModelAllImages(model, readPickle(imgDictTrainPath), imgOrigDir, mapPath, node, run_mbSize)

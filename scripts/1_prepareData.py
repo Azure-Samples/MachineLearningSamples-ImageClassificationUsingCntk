@@ -14,6 +14,10 @@ from PARAMETERS import *
 random.seed(0)
 makeDirectory(rootDir)
 makeDirectory(procDir)
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.1_prepareData", "true")
+
 imgDictTest  = dict()
 imgDictTrain = dict()
 subdirs = getDirectoriesInDirectory(imgOrigDir)

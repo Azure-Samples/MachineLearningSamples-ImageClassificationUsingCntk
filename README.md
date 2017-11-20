@@ -33,6 +33,9 @@ The key steps required to deliver this solution are as follows:
 3. A machine or VM running Windows.
 4. A dedicated GPU is recommended, however not required.
 
+## Data/Telemetry
+This sample "Image Classification using CNTK" collects usage data and sends it to Microsoft to help improve our products and services. Read our [privacy statement](http://go.microsoft.com/fwlink/?LinkId=521839) to learn more.
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

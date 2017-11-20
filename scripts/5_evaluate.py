@@ -20,6 +20,9 @@ boEvalOnTrainingSet = False  # Set to 'False' to evaluate on test set; 'True' to
 makeDirectory("outputs")
 print("Classifier = " + classifier)
 print("Directory used to read and write model/image files: " + rootDir)
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.5_evaluate", "true")
 
 # Load data
 print("Loading data...")
@@ -58,8 +61,6 @@ fig.savefig('outputs/rocCurve_confMat.jpg', bbox_inches='tight', dpi = 200)
 
 # Print accuracy to console
 globalAcc, classAccs = cmPrintAccuracies(confMatrix, classes, gtLabels)
-
-amlLogger = getAmlLogger()
 if amlLogger != []:
     amlLogger.log("clasifier", classifier)
     amlLogger.log("Global accuracy", 100 * globalAcc)

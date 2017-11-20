@@ -12,6 +12,10 @@ from PARAMETERS import *
 # Main
 ####################################
 random.seed(0)
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.4_trainSVM", "true")
+
 if not classifier.startswith('svm'):
     print("No need to train SVM since using the DNN directly as classifier.")
     
@@ -59,7 +63,6 @@ else:
     print("Wrote svm to: " + svmPath + "\n")
 
     # Log accuracy and regularizer value using Azure ML
-    amlLogger = getAmlLogger()
     if amlLogger != []:
         amlLogger.log("Regularization Rate", svm_CVals)
         amlLogger.log("Accuracy", testAccs)

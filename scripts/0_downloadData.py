@@ -22,6 +22,9 @@ maxSize = 1000
 makeDirectory(rootDir)
 makeDirectory(imgOrigDir)
 print("Directory used to read and write model/image files: " + rootDir)
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.0_downloadData", "true")
 
 # Read image urls
 if os.path.exists(imgUrlsPath):

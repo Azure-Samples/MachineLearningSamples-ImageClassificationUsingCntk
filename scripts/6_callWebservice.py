@@ -21,6 +21,10 @@ imgPath = "../resources/testImg.jpg"
 ####################################
 # Main
 ####################################
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.6_callWebservice", "true")
+
 # Check if scoring url and service key are defined
 try:
     cluster_scoring_url, service_key

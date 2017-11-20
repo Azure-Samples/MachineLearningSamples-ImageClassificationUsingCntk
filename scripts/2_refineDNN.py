@@ -16,6 +16,9 @@ makeDirectory(workingDir)
 makeDirectory(resourcesDir)
 makeDirectory("outputs")
 print("Directory used to read and write model/image files: " + rootDir)
+amlLogger = getAmlLogger()
+if amlLogger != []:
+    amlLogger.log("amlrealworld.ImageClassificationUsingCntk.2_refineDNN", "true")
 
 # Download pre-trained ResNet model if not yet downloaded
 if not os.path.exists(cntkPretrainedModelPath):
