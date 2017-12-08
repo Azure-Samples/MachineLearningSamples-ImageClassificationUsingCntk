@@ -9,9 +9,9 @@ from helpers_cntk import *
 ####################################
 # Parameters
 ####################################
-classifier   = 'svm' #must match the option used for model training
-imgPath      = "uploadedImg.jpg" #"12.jpg"
-resourcesDir = "tmp"
+classifier   = 'svm'  # must match the option used for model training
+imgPath      = "uploadedImg.jpg"
+resourcesDir = ""
 
 # Do not change
 run_mbSize = 1
@@ -46,13 +46,14 @@ def run(input_df):
         pil_img.save(imgPath, "JPEG")
         print("Save pil_img to: " + imgPath)
 
-        # Load model <---------- SHOULD BE DONE JUST ONCE
+        # Load model (once then keep in memory)
         print("Classifier = " + classifier)
         makeDirectory(workingDir)
         if not os.path.exists(cntkRefinedModelPath):
             raise Exception("Model file {} does not exist, likely because the {} classifier has not been trained yet.".format(cntkRefinedModelPath, classifier))
-        model = load_model(cntkRefinedModelPath)
-        lutId2Label = readPickle(lutId2LabelPath)
+        if not ('model' in vars() or 'model' in globals()):
+            model = load_model(cntkRefinedModelPath)
+            lutId2Label = readPickle(lutId2LabelPath)
 
         # Run DNN
         printDeviceType()

@@ -7,7 +7,7 @@ from helpers import *
 ####################################
 # Parameters
 ####################################
-imgPath = "../resources/testImg.jpg"
+imgPath = "./resources/testImg.jpg"
 
 # --- Edit and uncomment when calling a locally-deployed Rest API ---
 #cluster_scoring_url = "http://127.0.0.1:32773/score."
@@ -51,7 +51,9 @@ for i in range(5):
         localDuration = int(float(1000.0*(time.time() - startTime)))
         print("Webservice call took {:5} ms, pure computation time: {:5} ms, overhead (difference) = {:4} ms.".format(localDuration, apiDuration, (localDuration - apiDuration)))
         if i == 0:
-            print("Web-service returned:" + json.dumps(res.json(), indent=4))
+            print("Image classified as '{}' with confidence score {}.".format(json.loads(res.json())["label"],
+                                                                              json.loads(res.json())["score"]))
+            print("Full web-service output:" + json.dumps(res.json(), indent=4))
     except:
         print("ERROR: webservice returned message " + res.text)
 print("DONE")
